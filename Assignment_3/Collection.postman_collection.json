@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "cbb24cbf-ce2d-4bc5-af14-5fc2d68be635",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26777390"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Status Code  Assertion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Status code assertion (Code name has string)",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"// Response Body Assertion (Contains String)",
+							"pm.test(\"Body must contain the string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"first_name\");",
+							"});",
+							"",
+							"// Response Body Assertion (JSON value Check)",
+							"pm.test(\"JSON Value check\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData.data[2].id);",
+							"    console.log(jsonData.value);",
+							"    pm.expect(jsonData.value).to.eql(undefined);",
+							"});",
+							"",
+							"// Response Time Assertion",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    console.log(responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
