@@ -23,11 +23,11 @@ Replace path/to/postman_collection.json with the path to your exported Postman c
      
      > Firstly add the module to your code
 
-		+ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+		> import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
-	> And then outside the default function , wrap it with th ehandle summary( data) function which k6 calls at the end of the any test.
+     > And then outside the default function , wrap it with th ehandle summary( data) function which k6 calls at the end of the any test.
 
-+ export function handleSummary(data) {
+		> export function handleSummary(data) {
   return {
     "summary.html": htmlReport(data),
   };
@@ -35,5 +35,5 @@ Replace path/to/postman_collection.json with the path to your exported Postman c
 
 Note: summary.html-> Name of the html report.
 
-	+ Now when you will run the test script the html file will be created.
+7. Now when you will run the test script the html file will be created.
 
